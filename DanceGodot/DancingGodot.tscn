@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://DanceGodot/dancing_godot_material.tres" type="Shader" id=1]
+[ext_resource path="res://DanceGodot/DancingGodot.gd" type="Script" id=2]
+[ext_resource path="res://DanceGodot/SpeedXControil.gd" type="Script" id=3]
+[ext_resource path="res://icon.png" type="Texture" id=4]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 1 )
+shader_param/time_factory = 1.0
+shader_param/speed = Vector2( 20, 2 )
+shader_param/R = 5.171
+
+[node name="DancingGodot" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Icon" type="Sprite" parent="."]
+material = SubResource( 1 )
+position = Vector2( 300, 173.5 )
+scale = Vector2( 2.90625, 2.60938 )
+texture = ExtResource( 4 )
+
+[node name="SpeedXControil" type="HSlider" parent="."]
+margin_left = 188.0
+margin_top = 322.0
+margin_right = 368.0
+margin_bottom = 412.0
+script = ExtResource( 3 )
+
+[connection signal="speed_x_change" from="SpeedXControil" to="." method="_on_SpeedXControil_speed_x_change"]
+[connection signal="value_changed" from="SpeedXControil" to="SpeedXControil" method="_on_SpeedXControil_value_changed"]

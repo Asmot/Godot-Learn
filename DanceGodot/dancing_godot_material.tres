@@ -1,0 +1,17 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type canvas_item;
+
+uniform float time_factory = 1.0;
+uniform vec2 speed = vec2(20., 20.);
+uniform float R = 5.;
+
+void vertex() {
+	VERTEX.x +=  cos(TIME * time_factory + VERTEX.x + VERTEX.y) * speed.x;
+	VERTEX.y +=  sin(TIME * time_factory + VERTEX.x + VERTEX.y) * speed.y;
+}
+
+void fragment() {
+	//COLOR = vec4(1., 0. ,0., 1.);
+}"
